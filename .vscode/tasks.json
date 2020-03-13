@@ -1,0 +1,88 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "CF-Test",
+            "command": "clear&&cf test ${fileBasename}",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "CF-Submit",
+            "command": "clear&&cf submit ${fileBasename}",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "CF-Menu",
+            "command": "clear&&cf ${input:CFFunction}",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "CF-MenuContest",
+            "command": "clear&&cf ${input:CFFunctionMin} ${input:CFContestID}",
+            "options": {
+                "cwd": "!!!Change This Directory"
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "g++ build active file",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "CFContestID",
+            "description": "Contest ID",
+            "type": "promptString"
+        },
+        {
+            "id": "CFFunction",
+            "description": "Select operation",
+            "type": "pickString",
+            "options": [
+                "list",
+                "watch",
+                "parse",
+                "test",
+                "submit",
+                "open",
+                "stand",
+                "sid",
+                "pull",
+                "upgrade"
+            ]
+        },
+        {
+            "id": "CFFunctionMin",
+            "description": "Select operation",
+            "type": "pickString",
+            "options": [
+                "race",
+                "parse"
+            ]
+        }
+    ],
+    "version": "2.0.0"
+}
